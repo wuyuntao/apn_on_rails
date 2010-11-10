@@ -24,14 +24,8 @@ if defined? Rails
           configatron.apn.feedback.set_default(:cert, configatron.apn.cert)
         end
 
-        require 'app/models/apn/base'
-
-        Dir.glob(File.join(File.dirname(__FILE__), 'app', 'models', 'apn', '*.rb')).sort.each do |f|
-          require f
-        end
-
-        %w{ models controllers helpers }.each do |dir| 
-          path = File.join(File.dirname(__FILE__), 'app', dir)
+        %w{models controllers helpers}.each do |dir| 
+          path = File.expand_path("#{File.dirname(__FILE__)}/../app/#{dir}")
           next unless File.directory? path
 
           $LOAD_PATH << path 
