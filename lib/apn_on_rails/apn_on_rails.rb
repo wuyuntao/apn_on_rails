@@ -2,12 +2,13 @@ require 'socket'
 require 'openssl'
 require 'configatron'
 
-rails_root = defined?(Rails.root) ?
-             Rails.root :
-             File.join(FileUtils.pwd, 'rails_root')
-rails_env =  defined?(Rails.env) ?
-             Rails.env :
-             'development'
+rails_root, rails_env = if defined? Rails
+  [ Rails.root, Rails.env ]
+elsif defined? RAILS_ROOT
+  [ RAILS_ROOT, RAILS_ENV ]
+else
+  [ File.join(FileUtils.pwd, 'rails_root'), 'development' ]
+end
 
 configatron.apn.set_default(:passphrase, '')
 configatron.apn.set_default(:port, 2195)
