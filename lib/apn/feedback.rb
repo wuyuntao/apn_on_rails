@@ -1,4 +1,4 @@
-require 'libs/connection'
+require 'apn/connection'
 
 module APN
   # Module for talking to the Apple Feedback Service.
