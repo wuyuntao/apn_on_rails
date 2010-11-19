@@ -1,5 +1,6 @@
 require 'apn/connection'
 require 'apn/feedback'
+require 'apn/errors'
 
 class APN::App < APN::Base
   has_many :groups, :class_name => 'APN::Group', :dependent => :destroy
