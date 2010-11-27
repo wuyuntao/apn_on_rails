@@ -23,12 +23,6 @@ Gem::Specification.new do |s|
     "VERSION",
     "apn_on_rails.gemspec",
     "autotest/discover.rb",
-    *Dir['app/**/*.rb'],
-    *Dir['generators/**/*.rb'],
-    *Dir['lib/**/*.rake'],
-    *Dir['lib/**/*.rb'],
-    *Dir['spec/**/*.rb'],
-    *Dir['spec/fixtures/*.bin'],
     "spec/rails_root/config/apple_push_notification_development.pem" ]
   s.homepage = %q{http://github.com/wopata/apn_on_rails}
   s.require_paths = ["lib"]
