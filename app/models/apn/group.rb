@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 class APN::Group < APN::Base
   belongs_to :app, :class_name => 'APN::App'
   has_many   :device_groupings, :class_name => "APN::DeviceGrouping", :dependent => :destroy

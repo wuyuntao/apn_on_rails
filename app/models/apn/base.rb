@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 module APN
   class Base < ActiveRecord::Base # :nodoc:
     def self.table_name # :nodoc:

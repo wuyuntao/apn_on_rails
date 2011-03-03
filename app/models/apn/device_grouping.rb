@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 class APN::DeviceGrouping < APN::Base
   belongs_to :group, :class_name => 'APN::Group'
   belongs_to :device, :class_name => 'APN::Device'

@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 # Represents an iPhone (or other APN enabled device).
 # An APN::Device can have many APN::Notification.
 # 

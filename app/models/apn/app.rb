@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 require 'apn/connection'
 require 'apn/feedback'
 require 'apn/errors'
