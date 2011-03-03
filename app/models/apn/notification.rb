@@ -19,6 +19,7 @@
 class APN::Notification < APN::Base
   include ::ActionView::Helpers::TextHelper
   extend ::ActionView::Helpers::TextHelper
+  serialize :alert
   serialize :custom_properties
   
   belongs_to :device, :class_name => 'APN::Device'

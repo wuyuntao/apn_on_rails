@@ -3,6 +3,7 @@
 class APN::GroupNotification < APN::Base
   include ::ActionView::Helpers::TextHelper
   extend ::ActionView::Helpers::TextHelper
+  serialize :alert
   serialize :custom_properties
   
   belongs_to :group, :class_name => 'APN::Group'
