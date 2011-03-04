@@ -19,6 +19,8 @@
 class APN::Notification < APN::Base
   include ::ActionView::Helpers::TextHelper
   extend ::ActionView::Helpers::TextHelper
+
+  serialize :alert
   serialize :custom_properties
   
   belongs_to :device, :class_name => 'APN::Device'
@@ -29,7 +31,7 @@ class APN::Notification < APN::Base
   # If the message is over 150 characters long it will get truncated
   # to 150 characters with a <tt>...</tt>
   def alert=(message)
-    if !message.blank? && message.size > 150
+    if !message.blank? && message.is_a?(String) && message.size > 150
       message = truncate(message, :length => 150)
     end
     write_attribute('alert', message)
