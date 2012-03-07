@@ -17,6 +17,17 @@ class APN::GroupNotification < APN::Base
     self.group.devices
   end
 
+  # Stores the text alert message you want to send to the device.
+  #
+  # If the message is over 150 characters long it will get truncated
+  # to 150 characters with a <tt>...</tt>
+  def alert=(message)
+    if !message.blank? && message.is_a?(String) && message.size > 150
+      message = truncate(message, :length => 150)
+    end
+    write_attribute('alert', message)
+  end
+
   # Creates a Hash that will be the payload of an APN.
   #
   # Example:
