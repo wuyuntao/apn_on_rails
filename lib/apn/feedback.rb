@@ -15,9 +15,7 @@ module APN
         return if cert.nil?
         APN::Connection.open_for_feedback({:cert => cert}) do |conn, sock|
           # Read 38 bytes chunks instead of lines
-          while line = sock.recv(38)
-            break if line.blank?
-            line.strip!
+          while line = conn.read(38)
             feedback = line.unpack('N1n1H140')
             token = feedback[2].scan(/.{0,8}/).join(' ').strip
             device = APN::Device.find(:first, :conditions => {:token => token})
