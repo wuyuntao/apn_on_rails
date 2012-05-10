@@ -12,9 +12,11 @@ module APN
       # that Apple believes the device de-registered itself.
       def devices(cert, &block)
         devices = []
-        return if cert.nil? 
+        return if cert.nil?
         APN::Connection.open_for_feedback({:cert => cert}) do |conn, sock|
-          while line = sock.gets   # Read lines from the socket
+          # Read 38 bytes chunks instead of lines
+          while line = sock.recv(38)
+            break if line.blank?
             line.strip!
             feedback = line.unpack('N1n1H140')
             token = feedback[2].scan(/.{0,8}/).join(' ').strip
@@ -28,7 +30,7 @@ module APN
         devices.each(&block) if block_given?
         return devices
       end # devices
-      
+
       def process_devices
         ActiveSupport::Deprecation.warn("The method APN::Feedback.process_devices is deprecated.  Use APN::App.process_devices instead.")
         APN::App.process_devices
